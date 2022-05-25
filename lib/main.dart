@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           title: Text('Song Galery'),
@@ -42,6 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
             tabs: <Widget>[
               Tab(
                 icon: Icon(Icons.collections),
+              ),
+              Tab(
+                icon: Icon(Icons.audiotrack),
               ),
             ],
           ),
