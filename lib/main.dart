@@ -38,14 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Song Galery'),
+          title: Text('My Shop'),
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
                 icon: Icon(Icons.collections),
               ),
               Tab(
-                icon: Icon(Icons.audiotrack),
+                icon: Icon(Icons.menu),
               ),
             ],
           ),
