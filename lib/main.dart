@@ -180,10 +180,14 @@ class _ItemFullScreenWidget extends StatelessWidget {
 }
 
 List<Item> items = [
-  //1
   Item(
     "https://cf.shopee.co.id/file/4ac380fdc2f97f8929445c57bfd4218f",
     "Sepatu Converse Original",
     "450.000 - 500.000",
+  ),
+  Item(
+    "https://cf.shopee.co.id/file/834ea0501521b7cc59375ddfe3a889fc",
+    "Sepatu Vans Original America USA",
+    "600.000 - 700.000",
   ),
 ];
