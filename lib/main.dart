@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'item.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,18 +7,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Axcora Apps',
       theme: ThemeData(
         // This is the theme of your application.
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
     );
   }
 }
 
+class Item {
+  final String imageUrl;
+  final String name;
+  final String description;
+
+  Item(this.imageUrl, this.name, this.description);
+}
+
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -34,11 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Man of the ART'),
+          title: Text('Song Galery'),
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
-                icon: Text('creativebydre.vercel.app'),
+                icon: Icon(Icons.collections),
+              ),
+              Tab(
+                icon: Icon(Icons.audiotrack),
               ),
             ],
           ),
@@ -48,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // GridView tab content Widget
             GridView.count(
               // Items in row
-              crossAxisCount: 3,
+              crossAxisCount: 2,
               // Vertical spacing between rows
               mainAxisSpacing: 5.0,
               // Horizontal spacing between columns
@@ -61,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: items.map<Widget>((Item item) => _ItemGridCellWidget(item)).toList(),
             ),
             // ListView tab content Widget
+            ListView.builder(itemCount: items.length, itemBuilder: (BuildContext context, int position) => _ItemListCellWidget(items[position]))
           ],
         ),
       ),
@@ -86,6 +94,7 @@ class _ItemGridCellWidget extends StatelessWidget {
     return GridTile(
         footer: GridTileBar(
           title: Text(_item.name),
+          subtitle: Text(_item.description),
           backgroundColor: Colors.black38,
         ),
         child: GestureDetector(
@@ -124,16 +133,20 @@ class _ItemListCellWidget extends StatelessWidget {
         _item.name,
         style: TextStyle(
           fontWeight: FontWeight.w500,
-          fontSize: 40,
+          fontSize: 20,
         ),
       ),
-
+      subtitle: Text(
+        _item.description,
+        maxLines: 2,
+        style: TextStyle(),
+      ),
       leading: Hero(
         key: Key(_item.imageUrl),
         tag: _item.name,
         child: Image.network(
           _item.imageUrl,
-          width: 150,
+          width: 50,
           height: 50,
           fit: BoxFit.cover,
         ),
@@ -167,88 +180,124 @@ class _ItemFullScreenWidget extends StatelessWidget {
 }
 
 List<Item> items = [
+  //1
   Item(
     "https://cf.shopee.co.id/file/4ac380fdc2f97f8929445c57bfd4218f",
-    "Sepatu Coverse Original",
+    "Sepatu Converse Original",
+    "450.000 - 500.000",
   ),
+  //2
   Item(
-    "https://1.bp.blogspot.com/-ioVaaIddIqs/YLcD0ww34tI/AAAAAAAAOXk/9RTdBvWLyUERqKLsV4QQ5NSPJ4wqG3QjACLcBGAsYHQ/s960/13641057_10206941690881710_3236102612660253068_o.jpg",
-    "Queen Nop",
+    "https://i.pinimg.com/originals/40/c3/be/40c3bef82a8077e5c872808eefff5c6d.png",
+    "Everest",
+    "02.11",
   ),
+  //3
   Item(
-    "https://1.bp.blogspot.com/-OpMZ_o4jHAw/YLcDtNa1HrI/AAAAAAAAOWI/8j6RM6WqhXkD1Pk4D_zVaBOM7ygSAOYQwCLcBGAsYHQ/s960/10394094_10203991845737425_2854924252224985100_n.jpg",
-    "Rockers !!",
+    "https://image.freepik.com/free-vector/flat-design-baby-shark-cartoon-style_52683-36255.jpg",
+    "Shark",
+    "21.52",
   ),
+  //4
   Item(
-    "https://1.bp.blogspot.com/-eDvKZrcCJ7c/YLcD1PnJOhI/AAAAAAAAOXs/LLbd2BZOF0MKTDV3SN1QGkR4e1BIAcGKACLcBGAsYHQ/s960/14054551_10207051178218825_8602650237562101769_o.jpg",
-    "Ben Dolls",
+    "https://image.freepik.com/free-vector/fairytale-concept-with-child-reading_23-2148472951.jpg",
+    "Dreaming",
+    "22.11",
   ),
+  //5
   Item(
-    "https://1.bp.blogspot.com/-dzsWXd3j-WU/YLcDwTnJyvI/AAAAAAAAOW0/X4CoJvho17Mt9Vc65O210R4vNxHosa6IgCLcBGAsYHQ/s960/12593783_10206000196624942_9050616884091398150_o.jpg",
-    "Djoker",
+    "https://img.freepik.com/free-vector/spring-landscape-scene_23-2148860692.jpg",
+    "Nature",
+    "01.12",
   ),
+  //6
   Item(
-    "https://1.bp.blogspot.com/-_y2voGxKyR0/YLcDuRcgUTI/AAAAAAAAOWY/PH1r2rvYvs8gEUH_T51ljBLIZjX5_sdoQCLcBGAsYHQ/s960/11193409_10204127294603562_2875561234130979445_n.jpg",
-    "Funn",
+    "https://pw.artfile.me/wallpaper/20-03-2017/650x366/vektornaya-grafika-priroda--nature-sneg--1143282.jpg",
+    "Everest 2",
+    "23.44",
   ),
+  //7
   Item(
-    "https://1.bp.blogspot.com/-BqA6OVEnGhM/YLfgqIKvAvI/AAAAAAAAO0w/KfKXvPFB8NAY6b3E6rTcyKBNv4XAtGfsgCLcBGAsYHQ/s2048/11057395_10205324039081426_2477446517368751830_o.jpg",
-    "Ambyar",
+    "https://wallpaperaccess.com/full/645620.png",
+    "IronHeard",
+    "19.20",
   ),
+  //8
   Item(
-    "https://1.bp.blogspot.com/-Pt7PeID56KY/YLfgs9dwVfI/AAAAAAAAO1Q/Aq1mfEqj9OQ9DAVNvN4tlxibHZsp44oYACLcBGAsYHQ/s960/12377665_10205391053156736_180768716340258921_o.jpg",
-    "Prambanan Queen",
+    "https://images.wallpaperscraft.com/image/single/astronaut_spacesuit_reflection_144426_1280x720.jpg",
+    "Astronot",
+    "20.00",
   ),
+  //9
   Item(
-    "https://1.bp.blogspot.com/-Mgj1en3nK14/YLfgsDhi5cI/AAAAAAAAO1I/APMIWvFxPOIYqMq52BYh4tSsOf8MmdHzwCLcBGAsYHQ/s2048/12238414_10205227340864031_778181118159969280_o.jpg",
-    "Nonik Belanda",
+    "https://images.wallpaperscraft.com/image/single/deer_art_vector_134088_1280x720.jpg",
+    "Deer",
+    "14.55",
   ),
+  //10
   Item(
-    "https://1.bp.blogspot.com/-vQSkynvNu1A/YLfgt6vKNvI/AAAAAAAAO1Y/U4sy9HyqBpg6p_IKgUOnNUmZvV-5xeDuACLcBGAsYHQ/s2048/12628357_10205615757294199_3287859292085175463_o.jpg",
-    "Miss Tery",
+    "https://images.wallpaperscraft.com/image/single/minimalism_sky_clouds_sun_mountains_lake_landscape_95458_1280x720.jpg",
+    "Kilimanjaro",
+    "12.00",
   ),
+  //11
   Item(
-    "https://1.bp.blogspot.com/-ij-NFADGqdk/YLfg4scck_I/AAAAAAAAO3U/d3MLr5KhWe4xWR6mnSqh5hsVFgH2z-6GQCLcBGAsYHQ/s960/886934_10205963623110627_6134047726902412121_o.jpg",
-    "Dark Queen",
+    "https://images.wallpaperscraft.com/image/single/lion_art_vector_122213_1280x720.jpg",
+    "The Lion King",
+    "16.19",
   ),
+  //12
   Item(
-    "https://1.bp.blogspot.com/-BxF2nvnyFgM/YLfgquokTKI/AAAAAAAAO00/BOtQVIbgqOM07AbTs-gwuILS7uIt4kEsgCLcBGAsYHQ/s960/11222601_10205275817115907_6015660095802664155_o.jpg",
-    "The Godong",
+    "https://images.wallpaperscraft.com/image/single/minimalism_origami_japan_rising_sun_wave_74405_1280x720.jpg",
+    "Japanese",
+    "15.11",
   ),
+  //13
   Item(
-    "https://1.bp.blogspot.com/-GF-bDnEgUEo/YLfgpqkvo5I/AAAAAAAAO0o/DX_TxEA8fG050iGVdv9VQR0FCb_DPHj4QCLcBGAsYHQ/s1500/10998893_10203759287723620_1103356185496760963_o.jpg",
-    "Silence Grave",
+    "https://images.wallpaperscraft.com/image/single/landscape_mountains_art_140515_1280x720.jpg",
+    "Lavender",
+    "21.20",
   ),
+  //14
   Item(
-    "https://1.bp.blogspot.com/-5qBv3dYfyUU/YLfgw1eNybI/AAAAAAAAO14/IM7Yct45Ickl8klvnq5K6-JZPu3gSrD4QCLcBGAsYHQ/s960/13912328_10207051180018870_6062311790468297098_n.jpg",
-    "Dhurga",
+    "https://images.wallpaperscraft.com/image/single/spruce_art_forest_131371_1280x720.jpg",
+    "Night Nature",
+    "16.07",
   ),
+  //15
   Item(
-    "https://1.bp.blogspot.com/-PpAPAPBxQlU/YLfgzx5M5yI/AAAAAAAAO2Y/l9SSHDMATAkpbWixtDxwlpyJZ2yTdA9IgCLcBGAsYHQ/s2048/20863316_10210162091189705_8698226943045654489_o.jpg",
-    "Snow Queen",
+    "https://images.wallpaperscraft.com/image/single/forest_trees_mountains_146485_1280x720.jpg",
+    "Forest 2",
+    "17.18",
   ),
+  //16
   Item(
-    "https://1.bp.blogspot.com/--VDzC31e88w/YLfg1vat32I/AAAAAAAAO2w/wHcwaRRySAIdetW58TFVlvctrzlbOQx3ACLcBGAsYHQ/s2048/27907821_10211455634407477_121954832907508005_o.jpg",
-    "Ladyna",
+    "https://images.wallpaperscraft.com/image/single/phoenix_bird_art_140086_1280x720.jpg",
+    "Phoenix",
+    "10.00",
   ),
+  //17
   Item(
-    "https://1.bp.blogspot.com/-oHMAjxAGO_E/YLfgxfNmsTI/AAAAAAAAO2A/scFR8-xxe70oBIrFs2OYJBVoJ-ymyGLdQCLcBGAsYHQ/s2048/14138239_10207185317612226_930937547589501765_o.jpg",
-    "Modusa",
+    "https://images.wallpaperscraft.com/image/single/mountains_river_sun_143529_1280x720.jpg",
+    "River",
+    "10.11",
   ),
+  //18
   Item(
-    "https://1.bp.blogspot.com/-RZDCSVYjdtA/YLfg0FZwKzI/AAAAAAAAO2c/n5yhYzPif6sPmh4zBLIO82S9ZN0M5nzQACLcBGAsYHQ/s2048/23800314_10210853745920641_5760832336760384644_o.jpg",
-    "Kembangan",
+    "https://images.wallpaperscraft.com/image/single/silhouette_moon_art_138485_1280x720.jpg",
+    "Moon Art",
+    "16.19",
   ),
+  //19
   Item(
-    "https://1.bp.blogspot.com/-REZXuzlKYC4/YLfgp5njEZI/AAAAAAAAO0s/bptYk8Z18O01MbsZc4E3wuhZJ07iU426gCLcBGAsYHQ/s414/11038895_10203777474818286_7880851201234961819_o.jpg",
-    "Nyai Blorong",
+    "https://images.wallpaperscraft.com/image/single/graphics_low_poly_digital_art_minimalism_102027_1280x720.jpg",
+    "Poligon Art",
+    "23.59",
   ),
+  //20
   Item(
-    "https://1.bp.blogspot.com/-FYXTh2Dhh40/YLer-rAG2fI/AAAAAAAAOmk/IC9PMPbVczA5HC3lrj0q3anBi4Kl0msXACLcBGAsYHQ/s2048/17436274_10208879039554216_2655411005366421640_o.jpg",
-    "Vintage",
-  ),
-  Item(
-    "https://1.bp.blogspot.com/-NsjYwdtM6tA/YLdx9D0OFXI/AAAAAAAAOZA/rArYaXv1mk0ilu8vC1TaBF8XiVAdMdRwwCLcBGAsYHQ/s960/13087703_10206353363133884_4152557819958208994_n.jpg",
-    "Berawan",
+    "https://images.wallpaperscraft.com/image/single/mountains_sunset_landscape_147439_1280x720.jpg",
+    "Sunset",
+    "16.10",
   ),
 ];
