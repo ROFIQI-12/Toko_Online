@@ -190,4 +190,29 @@ List<Item> items = [
     "Sepatu Vans Original America USA",
     "600.000 - 700.000",
   ),
+  Item(
+    "https://cf.shopee.co.id/file/2125e5c6e143f7ddf7feaf48ef1b6d0d",
+    "Sepatu Adidas Original X PLR Black Indo",
+    "480.000 - 520.000",
+  ),
+  Item(
+    "https://apollo-singapore.akamaized.net/v1/files/7oebbpx09k6k-ID/image;s=850x0",
+    "Sepatu Nike Air Jordan 1 Retro High Original",
+    "850.000 - 900.000",
+  ),
+  Item(
+    "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//97/MTA-10658544/no_brand_sepatu_sneaker_pria_import_-_air_venron_truedoo_cassual_shoes_-_sepatu_kasual_santai_full01_ld48p1pt.jpg",
+    "Sepatu Sneaker pria Impor - Air Vernon Truedo",
+    "350.000 - 400.000",
+  ),
+  Item(
+    "https://cf.shopee.co.id/file/4ffc521e651c7088127a958aad8a8436",
+    "Sport Shoes Candy KSM - Sneaker Cewek",
+    "250.000 - 330.000",
+  ),
+  Item(
+    "https://s3.bukalapak.com/img/8633497586/large/VansSlideOnBlackORIGINALSandalVans_1_scaledjpg_scaled.jpg",
+    "Sandal Vans Original On Logo Black",
+    "910.000",
+  ),
 ];
